@@ -117,10 +117,12 @@ def sopGeom(network, ctx, filename):
 	if ext == '.abc':
 		alembic = ctx.createNode('alembic', node_name=name)
 		alembic.setColor(hou.Color(ALEMBIC_NODE_COLOR))
+		alembic.setPosition(position)
 		alembic.parm('fileName').set(filename)
 	else:
 		geometry = ctx.createNode('file', node_name=name)
 		geometry.setColor(hou.Color(GEO_NODE_COLOR))
+		geometry.setPosition(position)
 		geometry.parm('file').set(filename)
 
 
