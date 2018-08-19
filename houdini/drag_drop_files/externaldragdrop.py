@@ -36,6 +36,8 @@ def copImages(network, ctx, filename):
 		return
 
 	name = baseName(filename, IMAGE_EXTENSIONS)[0]
+	name = re.sub(r'\s+', '_', name)
+
 	image = ctx.createNode('file', node_name=name)
 	image.setColor(hou.Color(IMAGE_NODE_COLOR))
 	image.setPosition(position)
@@ -47,6 +49,8 @@ def chanFiles(network, ctx, filename):
 		return
 
 	name = baseName(filename, CHAN_EXTENSIONS)[0]
+	name = re.sub(r'\s+', '_', name)
+
 	chan = ctx.createNode('file', node_name=name)
 	chan.setColor(hou.Color(CLIP_NODE_COLOR))
 	chan.setPosition(position)
@@ -58,6 +62,8 @@ def shopImages(network, ctx, filename):
 		return
 
 	name = baseName(filename, IMAGE_EXTENSIONS)[0]
+	name = re.sub(r'\s+', '_', name)
+
 	if ctx.type().name() == 'mat' or ctx.type().name() == 'vopmaterial':
 		image = ctx.createNode('texture', node_name=name)
 		image.parm('map').set(filename)
@@ -75,6 +81,7 @@ def objGeom(network, ctx, filename):
 		return
 
 	name, ext = baseName(filename, GEO_EXTENSIONS)
+	name = re.sub(r'\s+', '_', name)
 
 	if ext == '.fbx':
 		hou.hipFile.importFBX(filename)
@@ -107,6 +114,7 @@ def sopGeom(network, ctx, filename):
 		return
 
 	name, ext = baseName(filename, GEO_EXTENSIONS)
+	name = re.sub(r'\s+', '_', name)
 
 	if ext == '.ass':
 		procedural = ctx.createNode('arnold_asstoc', node_name=name.title())
