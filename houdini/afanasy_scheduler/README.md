@@ -6,6 +6,6 @@ Using this scheduler will allow to use CGRU Afanasy to schedule work items on re
 The current implementation is only a base, a lot has not been done yet.
 
 Installation:
-1. Copy scripts to the $HOUDINI_USER_PRED_DIR/pdg/types directory
-2. Copy the asset top_afanasyscheduler.hda to the $HOUDINI_USER_PRED_DIR/otls directory
+1. Copy scripts to the $HOUDINI_USER_PREF_DIR/pdg/types directory
+2. Copy the asset top_afanasyscheduler.hda to the $HOUDINI_USER_PREF_DIR/otls directory
 
