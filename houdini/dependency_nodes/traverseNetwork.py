@@ -43,7 +43,8 @@ def dependencyNodes(node: hou.OpNode) -> List[hou.ObjNode]:
     return nodes
 
 
-color = [0.5, 0.9, 0.20]
+# Example usage
+color = (0.5, 0.2, 0.20)
 node = hou.selectedNodes()[0]
 for node in dependencyNodes(node):
     node.setColor(hou.Color(color))
