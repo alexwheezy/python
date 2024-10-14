@@ -15,12 +15,8 @@ def traverseNetwork(node: hou.OpNode, nodes: List[hou.OpNode]):
 
     curr_node = None
     inputs = node.inputs()
-    # However, this does not work if the link has some pattern
-    # in the expression path e.g. /path/to* and returns an empty tuple.
-    refs = set(filter(isSopNode, node.references()))
-    parm_refs = set([parm.node() for parm in node.parmsReferencingThis()])
-    find_nodes = (*refs, *inputs, *parm_refs)
-
+    dependents = set(filter(isSopNode, (*node.dependents(), *node.references())))
+    find_nodes = (*inputs, *dependents)
     for node in find_nodes:
         if node and not node in nodes:
             nodes.append(node)
