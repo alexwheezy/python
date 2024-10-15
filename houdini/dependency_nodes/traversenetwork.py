@@ -21,12 +21,7 @@ def traverseNetwork(node: hou.OpNode, nodes: List[hou.OpNode]):
         if node and not node in nodes:
             nodes.append(node)
             curr_node = node
-        # Some nodes may have more than one connected
-        # input so all inputs must be processed.
-        if len(find_nodes) > 1:
             traverseNetwork(curr_node, nodes)
-
-    traverseNetwork(curr_node, nodes)
 
 
 def dependencyNodes(node: hou.OpNode) -> List[hou.ObjNode]:
@@ -44,3 +39,4 @@ color = (0.5, 0.2, 0.20)
 node = hou.selectedNodes()[0]
 for node in dependencyNodes(node):
     node.setColor(hou.Color(color))
+
