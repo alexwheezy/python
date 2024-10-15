@@ -14,10 +14,8 @@ def traverseNetwork(node: hou.OpNode, nodes: List[hou.OpNode]):
         return
 
     curr_node = None
-    inputs = node.inputs()
-    dependents = set(filter(isSopNode, (*node.dependents(), *node.references())))
-    find_nodes = (*inputs, *dependents)
-    for node in find_nodes:
+    dependents = set(filter(isSopNode, (*node.dependents(False), *node.references(False))))
+    for node in (*node.inputs(), *dependents):
         if node and not node in nodes:
             nodes.append(node)
             curr_node = node
@@ -39,4 +37,3 @@ color = (0.5, 0.2, 0.20)
 node = hou.selectedNodes()[0]
 for node in dependencyNodes(node):
     node.setColor(hou.Color(color))
-
